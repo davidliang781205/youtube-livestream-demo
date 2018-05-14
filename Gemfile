@@ -38,7 +38,7 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'jquery-rails'
 gem 'slim'
 gem "omniauth-google-oauth2", "~> 0.2.1"
-gem 'google-api-client'
+gem 'google-api-client', '>0.11'
 gem 'figaro'
 
 group :development, :test do

@@ -1,2 +1,15 @@
 - if current_user.present?
-  h1 = @client.inspect
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        h1.text-center Youtube Streams
+    .row
+      .col-md-10.col-md-offset-1
+        .panel.panel-default.video-list
+          .panel-body
+            - @res.items.each do |item|
+              .row.video-item
+                .col-md-2
+                  img.img-thumbnail src="#{item.snippet.thumbnails.default.url}"
+                .col-md-10
+                  h5 = item.snippet.title
