@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: youtube-demo_production
-  username: youtube-demo
-  password: <%= ENV['YOUTUBE-DEMO_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV["DB_HOST"] %>

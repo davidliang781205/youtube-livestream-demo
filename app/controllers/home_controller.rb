@@ -3,9 +3,8 @@ class HomeController < ApplicationController
 
   def index
     if current_user.present?
-      Youtube = Google::Apis::YoutubeV3
-      service = Youtube::YouTubeService.new
-      @token = current_user.oauth_token
+      @client = Google::Apis::YoutubeV3::LiveChatMessageAuthorDetails
+      # @youtube = @client.discovered_api('youtube', 'v3')
       # @video_list =
     end
   end
