@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  require 'google/apis/youtube_v3'
+  # require 'google/apis/youtube_v3'
 
   def index
     if current_user.present?
