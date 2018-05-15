@@ -1,8 +1,9 @@
 - if current_user.present?
-  .container
+  .container data-aos="fade-in"
     .row
       .col-md-8.col-md-offset-2
         h1.text-center Youtube Streams
+        h4 = @res.inspect
     .row
       .col-md-10.col-md-offset-1
         .panel.panel-default.video-list
@@ -10,6 +11,9 @@
             - @res.items.each do |item|
               .row.video-item
                 .col-md-2
-                  img.img-thumbnail src="#{item.snippet.thumbnails.default.url}"
+                  img.rounded src="#{item.snippet.thumbnails.default.url}"
                 .col-md-10
                   h5 = item.snippet.title
+                  p = item.snippet.channel_title
+                  p = item.id.video_id
+                  a.btn.btn-success.pull-right.lity-opener href="/videos?v=#{item.id.video_id}" data-lity="" Watch

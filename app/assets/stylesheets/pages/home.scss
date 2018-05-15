@@ -9,8 +9,10 @@
 
 .video-item {
   border-bottom: 1px solid #DDDDDD;
+  padding: 20px;
+  margin: 0;
   &:nth-child(even) {
-    background: #4B367C;
+    background: #EB3324;
     color: #DDDDDD;
   }
 }
