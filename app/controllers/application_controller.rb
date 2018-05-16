@@ -10,19 +10,21 @@ class ApplicationController < ActionController::Base
 
   def youtube_client
     if current_user
-      secrets = Google::APIClient::ClientSecrets.new(
-        {
-          "web" =>
-            {
-              "access_token" => current_user.oauth_token,
-              "refresh_token" => current_user.refresh_token,
-              "client_id" => ENV["GOOGLE_CLIENT_ID"],
-              "client_secret" => ENV["GOOGLE_SECRET"]
-            }
-        }
-      )
       client = Google::Apis::YoutubeV3::YouTubeService.new
-      client.authorization = secrets.to_authorization
+      # secrets = Google::APIClient::ClientSecrets.new(
+      #   {
+      #     "web" =>
+      #       {
+      #         "access_token" => current_user.oauth_token,
+      #         "refresh_token" => current_user.refresh_token,
+      #         "client_id" => ENV["GOOGLE_CLIENT_ID"],
+      #         "client_secret" => ENV["GOOGLE_SECRET"]
+      #       }
+      #   }
+      # )
+      authorization = Signet::OAuth2::Client.new(access_token: current_user.oauth_token)
+      authorization.expires_in = 1.week.from_now
+      client.authorization = authorization
 
       client
     else

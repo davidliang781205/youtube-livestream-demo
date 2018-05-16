@@ -22,13 +22,17 @@ body {
   }
 }
 
-.btn-success {
+.btn-default {
   padding: 20px 60px;
   font-size: 2em;
-  background: #EB3324;
+  background-color: #EB3324;
   border: none;
-  &:hover {
-    background: darken(#EB3324, 10%);
+  color: white;
+  &:hover,
+  &:active,
+  &:focus {
+    border: none;
+    background-color: darken(#EB3324, 10%);
   }
 }
 

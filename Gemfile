@@ -33,6 +33,7 @@ gem 'slim'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'google-api-client', '>0.11'
 gem 'figaro'
+gem 'signet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
