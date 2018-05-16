@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
       user.refresh_token = auth.credentials.refresh_token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
-      puts user.inspect
+      puts auth.inspect
+      puts auth.access_token
     end
   end
 end

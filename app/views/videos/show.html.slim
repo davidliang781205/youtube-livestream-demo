@@ -1,6 +1,21 @@
-.container-fluid
-  .col-md-8
-    iframe  frameborder="0" src="https://www.youtube.com/embed/#{@v}?autoplay=1" style="width: 100%; height: 640px"
+#ids data-token="#{@token}" data-chat-id="#{@v_info.items.first.live_streaming_details.active_live_chat_id}"
+.container-fluid style="margin-top: 40px"
+  .row
+    .col-md-8
+      iframe frameborder="0" src="https://www.youtube.com/embed/#{@v}?autoplay=1" style="width: 100%; height: 640px" allowfullscreen=""
 
-  .col-md-4
-    iframe src="https://www.youtube.com/live_chat?v=#{@v}&amp;embed_domain=youtube-livestream-demo.herokuapp.com"
+    .col-md-4.message-container
+      /- @v_chat.items.each do |message|
+        p.message
+          span.strong.username
+            = "#{message.author_details.display_name}"
+          = ": #{message.snippet.display_message}"
+  .row.padding-medium
+    .col-md-8
+      h4 = @v_info.items.first.snippet.channel_title
+      h4 = @v_info.items.first.snippet.title
+    .col-md-4
+      h4 Click on username to see a list of their messages
+      hr
+      .message-history-container
+

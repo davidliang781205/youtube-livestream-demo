@@ -1,0 +1,48 @@
+$(document).on('turbolinks:load', function() {
+  const TOKEN = $('#ids').data('token');
+  const LIVE_CHAT_ID = $('#ids').data('chat-id');
+  let base_url = 'https://www.googleapis.com/youtube/v3/liveChat/messages';
+  let time_interval = 3000;
+  let message_container = $('.message-container');
+  let response_message = "";
+
+  message_container.scrollTop(message_container[0].scrollHeight);
+  setInterval(function(){
+    $.ajax({
+      method: "GET",
+      url: base_url,
+      data: {
+        part: 'snippet,authorDetails',
+        liveChatId: LIVE_CHAT_ID,
+        access_token: TOKEN
+      }
+    }).done(function(data) {
+      response_message = data.items;
+      message_container.empty();
+      let message_body = ""
+      time_interval = data.pollingIntervalMillis;
+      data.items.forEach((e) => {
+        message_body += `<p class="message"><span class="strong username">${e.authorDetails.displayName}</span>: ${e.snippet.displayMessage}</p>`
+      });
+      message_container.append(message_body);
+      message_container.scrollTop(message_container[0].scrollHeight);
+      $(".username").on('click', (e) =>{
+        $('.message-history-container').empty();
+        let message_history = "";
+        let search_name= $(e.currentTarget).text();
+        message_history_body = response_message.filter((e) => {
+          if (e.authorDetails.displayName === search_name) {
+            message_history += `<p class="message"><span class="strong username">${e.authorDetails.displayName}</span>: ${e.snippet.displayMessage}</p>`
+          }
+          return e.authorDetails.displayName === search_name;
+        });
+        $('.message-history-container').append(message_history);
+      });
+    }).fail(function(data) {
+      console.log(data);
+    });
+  }, time_interval);
+
+
+
+});

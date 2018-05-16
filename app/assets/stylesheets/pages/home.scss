@@ -16,3 +16,30 @@
     color: #DDDDDD;
   }
 }
+
+.lity-content {
+  width: 95vw !important;
+}
+
+.lity-iframe .lity-container, .lity-youtube .lity-container, .lity-vimeo .lity-container, .lity-facebookvideo .lity-container, .lity-googlemaps .lity-container {
+  height: 90vh;
+  max-width: none !important;
+  width: auto !important;
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.message-container {
+  height: 645px;
+  overflow: scroll;
+  background: #DDDDDD;
+  .message {
+    cursor: pointer;
+  }
+}
+
+.padding-medium {
+  padding: 30px;
+}
