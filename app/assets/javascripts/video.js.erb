@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', () => {
   const TOKEN = $('#ids').data('token');
   const LIVE_CHAT_ID = $('#ids').data('chat-id');
   let base_url = 'https://www.googleapis.com/youtube/v3/liveChat/messages';
@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', function() {
   let response_message = "";
 
   message_container.scrollTop(message_container[0].scrollHeight);
-  setInterval(function(){
+  setInterval(() => {
     $.ajax({
       method: "GET",
       url: base_url,
@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
         liveChatId: LIVE_CHAT_ID,
         access_token: TOKEN
       }
-    }).done(function(data) {
+    }).done((data) => {
       response_message = data.items;
       message_container.empty();
       let message_body = ""
@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function() {
         });
         $('.message-history-container').append(message_history);
       });
-    }).fail(function(data) {
+    }).fail((data) => {
       console.log(data);
     });
   }, time_interval);

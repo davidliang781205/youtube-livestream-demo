@@ -22,4 +22,6 @@
                     p = item.id.video_id
                     a.btn.btn-success.pull-right.lity-opener href="/videos?v=#{item.id.video_id}" data-lity="" Watch
 - else
-  = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+  .flexbox-container
+    .flex-item
+      = link_to "Sign in with Youtube", "/auth/google_oauth2", id: "sign_in", class: "btn btn-success btn-lg"
