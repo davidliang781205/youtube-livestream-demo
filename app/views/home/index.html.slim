@@ -20,7 +20,11 @@
                     h5 = item.snippet.title
                     p = item.snippet.channel_title
                     p = item.id.video_id
+                    a.btn.btn-success.pull-right href="/videos?v=#{item.id.video_id}" style="margin-left: 10px" target="_blank"
+                      i.fa.fa-external-link
+
                     a.btn.btn-success.pull-right.lity-opener href="/videos?v=#{item.id.video_id}" data-lity="" Watch
+
 - else
   .flexbox-container
     .flex-item

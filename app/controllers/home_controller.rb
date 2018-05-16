@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def index
     if current_user.present?
-      @res = youtube_client.list_searches(:snippet, q: "esports", event_type: "live", max_results: "5", type: "video")
+      @res = youtube_client.list_searches(:snippet, q: "gaming", event_type: "live", max_results: "25", type: "video")
     end
   end
 end

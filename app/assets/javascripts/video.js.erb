@@ -1,12 +1,11 @@
 $(document).on('turbolinks:load', () => {
-  const TOKEN = $('#ids').data('token');
-  const LIVE_CHAT_ID = $('#ids').data('chat-id');
   let base_url = 'https://www.googleapis.com/youtube/v3/liveChat/messages';
   let time_interval = 3000;
   let message_container = $('.message-container');
   let response_message = "";
+  const TOKEN = $('#ids').data('token');
+  const LIVE_CHAT_ID = $('#ids').data('chat-id');
 
-  message_container.scrollTop(message_container[0].scrollHeight);
   setInterval(() => {
     $.ajax({
       method: "GET",
@@ -39,7 +38,6 @@ $(document).on('turbolinks:load', () => {
         $('.message-history-container').append(message_history);
       });
     }).fail((data) => {
-      console.log(data);
     });
   }, time_interval);
 

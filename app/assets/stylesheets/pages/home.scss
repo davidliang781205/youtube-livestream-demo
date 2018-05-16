@@ -74,6 +74,11 @@ body {
   }
 }
 
+.message-history-container {
+  height: 240px;
+  overflow: scroll;
+}
+
 .padding-medium {
   padding: 30px;
 }
